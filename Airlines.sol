@@ -28,4 +28,13 @@ modifier onlyChairperson{
   _;
 }
 
+//constructor function
+constructor () public payable {
+  chairperson == msg.sender;
+  
+  // Usage of msg.sender and msg.value for a payable function
+  membership[msg.sender] = 1; //automatically registered
+  balanceDetails[msg.sender].escrow = msg.value; 
+}
+
 }
