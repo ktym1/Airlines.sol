@@ -37,4 +37,21 @@ constructor () public payable {
   balanceDetails[msg.sender].escrow = msg.value; 
 }
 
+function register() public payable {
+  address AirlineA = msg.sender;
+  membership[AirlineA] = 1;
+  balanceDetails[msg.sender].escrow = msg.value;
+}
+
+function unregister (address payable AirlineZ) onlyChairperson public {
+  if(chairperson != msg.sender) {
+    revert();
+   }
+  membership[AirlineZ] = 0;
+  // return escrow to leaving airline: verify other conditions
+  AirlineZ.transfer(balanceDetails[AirlineZ].escrow);
+  balanceDetails[AirlineZ].escrow = 0;
+  }
+}
+
 }
