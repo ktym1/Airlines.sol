@@ -54,4 +54,20 @@ function unregister (address payable AirlineZ) onlyChairperson public {
   }
 }
 
+function request(address toAirline, uint hashOfDetails) onlyMember public {
+  if(membership[toAirline]!=1) {
+    revert();  
+  }
+   balanceDetails[msg.sender].status=0;
+   balanceDetails[msg.sender].hashOfDetails = hashOfDetails;
+}
+
+function response(address fromAirline, uinthasOfDetails, uint done) } onlyMember public {
+  if(membership[fromAirline]!=1) {
+    revert();
+  } 
+  balanceDetails[msg.sender].status=done;
+  balanceDetails[fromAirline].hashofDetails = hashOfDetails;
+  }
+}
 }
