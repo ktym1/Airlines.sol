@@ -2,7 +2,7 @@ pragma solidity ^0.6.0;
 
 
 contract Airlines {
-address chairperson;
+address chairperson; // identity of the chairperson
 
 
 // Airlines data structures
@@ -13,12 +13,12 @@ struct details (
 )
 
 // Airline account payments and membership mapping
-mapping (address=>details) public balanceDetails;
+mapping (address=>details) public balanceDetails; //map account address (identities) of members to their details (A mapping is like a hash table)
 mapping (address=>uint) membership;
 
 
-//modifier for onlyChairperson rule
-modifier onlyChairperson{
+//modifier for onlyChairperson rule. 
+modifier onlyChairperson{ 
   require(msg.sender == chairperson);
   _;
 }
