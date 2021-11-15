@@ -70,4 +70,14 @@ function response(address fromAirline, uinthasOfDetails, uint done) } onlyMember
   balanceDetails[fromAirline].hashofDetails = hashOfDetails;
   }
 }
+
+function settlePayment (address payable toAirline) onlyMember payable public {
+  address fromAirline=msg.sender;
+  uint amt = msg.value;
+  balanceDetails[toAirline].escrow - balanceDetails[toAirline].escrow + amt;
+  balanceDetails[fromAirline].escrow = balanceDetails[fromAirline].escrow - amt;
+  
+  //amt subtracted from msg.sender and given to toAirline
+  toAirline.transfer(amt);
+}
 }
